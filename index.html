@@ -6,6 +6,20 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
-
+<div id="video" style="width: 700px;height: 440px;margin: 200px auto;"></div>
 </body>
+<script src="js/ckplayer/ckplayer.js"></script>
+<script>
+    let videoObject = {
+        container: '#video',
+        variable: 'player',
+        html5m3u8: true,
+        adfront: "media/bet365.mp4",
+        adfronttime: '10',
+        video: [
+            ["http://video.vbcage.com/2018/01/f004aaf5cf61f969211dbf39befcad05/index.m3u8", 'video/m3u8', '中文标清', 0],
+        ]
+    };
+    let player = new ckplayer(videoObject);
+</script>
 </html>
