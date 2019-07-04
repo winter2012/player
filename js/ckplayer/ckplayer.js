@@ -4489,39 +4489,8 @@ function ckplayerConfig() {
 		},
 		/*广告播放结束*/
 		adEnded: function() {
-			var thisTemp = this;
-			this.adPlayStart = false;
-			this.adPlayerPlay = false;
-			if (this.adVideoPlay) {
-				if (this.videoTemp['src'] != '') {
-					this.V.src = this.videoTemp['src'];
-				} else {
-					if (this.V.src) {
-						this.V.removeAttribute('src');
-					}
-				}
-				if (this.videoTemp['source'] != '') {
-					this.V.innerHTML = this.videoTemp['source'];
-				}
-				if (this.videoTemp['currentSrc'] != '') {
-					this.V.src = this.videoTemp['currentSrc'];
-					this.V.currentSrc = this.videoTemp['currentSrc'];
-				}
-				if (this.videoTemp['loop']) {
-					this.V.loop = true;
-					this.videoTemp['loop'] = false;
-				}
-				if (this.adType == 'end') {
-					this.endedHandler();
-				} else {
-					this.videoPlay();
-				}
-			} else {
-				this.videoPlay();
-			}
-			this.changeVolume(this.vars['volume']);
-			this.sendJS('process', this.adType + ' ad ended');
-			this.changeControlBarShow(true);
+			this.getVideo(); //重新构建播放器
+			this.videoPlay(); //广告结束后自动播放
 		},
 		/*加载广告*/
 		loadAdvertisements: function() {
